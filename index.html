@@ -1,0 +1,899 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NorthEast News</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f8fa;
+    color: #111827;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 70px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    background: #111827;
+    color: white;
+
+    border-radius: 10px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #1d4ed8;
+}
+
+.menu-btn {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    font-size: 26px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 600px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 80px 7%;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(29,78,216,0.16),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #eef3ff,
+            #f7f8fa 55%,
+            #e9edf4
+        );
+}
+
+.hero-content {
+    max-width: 900px;
+    text-align: center;
+}
+
+.eyebrow {
+    color: #1d4ed8;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 22px;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #667085;
+
+    font-size: 18px;
+}
+
+.hero-btn {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    background: #111827;
+    color: white;
+
+    font-weight: bold;
+}
+
+.hero-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.feed-section,
+.info-section,
+.contact-section {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 100px 7%;
+}
+
+.section-heading {
+    margin-bottom: 40px;
+}
+
+.section-heading h2,
+.info-section h2,
+.contact-section h2 {
+
+    font-size: 45px;
+
+    line-height: 1.1;
+
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: #667085;
+}
+
+
+/* =========================
+   NEWS
+========================= */
+
+.news-grid {
+    display: grid;
+    gap: 22px;
+}
+
+.news-card {
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 30px rgba(16,24,40,0.04);
+}
+
+.news-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px 20px;
+
+    color: #667085;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
+}
+
+.news-meta strong {
+    color: #111827;
+}
+
+.news-content {
+
+    color: #344054;
+
+    white-space: pre-wrap;
+
+    font-size: 16px;
+}
+
+.status {
+    color: #667085;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.info-section {
+
+    display: grid;
+
+    grid-template-columns: 0.7fr 1.3fr;
+
+    gap: 70px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.info-section > p {
+
+    color: #667085;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.contact-section a {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #1d4ed8;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 35px 7%;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 64px;
+        padding: 0 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+
+        position: absolute;
+
+        top: 64px;
+
+        left: 0;
+        right: 0;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: white;
+
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+
+        padding: 15px 5%;
+
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .hero {
+
+        min-height: 540px;
+
+        padding: 70px 5%;
+    }
+
+    .feed-section,
+    .info-section,
+    .contact-section {
+
+        padding: 70px 5%;
+    }
+
+    .info-section {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <a href="#home" class="brand">
+
+        <span class="logo">
+            N
+        </span>
+
+        <span>
+            NorthEast News
+        </span>
+
+    </a>
+
+
+    <button
+        class="menu-btn"
+        id="menuBtn"
+    >
+        ☰
+    </button>
+
+
+    <nav id="navMenu">
+
+        <a href="#feed">
+            Feed
+        </a>
+
+        <a href="#about">
+            About Us
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            LOCAL • CURRENT • COMMUNITY
+        </p>
+
+
+        <h1>
+            News that keeps you connected.
+        </h1>
+
+
+        <p class="hero-description">
+            Stay informed with the latest reports
+            from your community and across the region.
+        </p>
+
+
+        <a
+            href="#feed"
+            class="hero-btn"
+        >
+            Explore the Feed
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     NEWS FEED
+========================= -->
+
+<section
+    class="feed-section"
+    id="feed"
+>
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            LATEST REPORTS
+        </p>
+
+
+        <h2>
+            News Feed
+        </h2>
+
+
+        <p class="section-description">
+            Recent reports from our contributors.
+        </p>
+
+    </div>
+
+
+    <!-- NEWS WILL APPEAR HERE -->
+
+    <div
+        id="newsFeed"
+        class="news-grid"
+    >
+
+        <p class="status">
+            Loading news...
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="info-section"
+    id="about"
+>
+
+    <div>
+
+        <p class="eyebrow">
+            WHO WE ARE
+        </p>
+
+
+        <h2>
+            About Us
+        </h2>
+
+    </div>
+
+
+    <p>
+
+        NorthEast News is a community-focused
+        news platform designed to make local
+        reports easy to discover and read.
+
+        We present reports clearly while showing
+        the reporter, place and date for context.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+    class="contact-section"
+    id="contact"
+>
+
+    <p class="eyebrow">
+        GET IN TOUCH
+    </p>
+
+
+    <h2>
+        Contact
+    </h2>
+
+
+    <p class="section-description">
+        For corrections, questions or
+        general enquiries:
+    </p>
+
+
+    <a href="mailto:contact@example.com">
+        contact@example.com
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        ©
+        <span id="year"></span>
+        NorthEast News.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================
+   SUPABASE CONFIG
+===================================== */
+
+const SUPABASE_URL =
+    "https://YOUR-PROJECT.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "YOUR_SUPABASE_ANON_KEY";
+
+
+
+/* =====================================
+   HAMBURGER
+===================================== */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+
+menuBtn.addEventListener("click", function() {
+
+    navMenu.classList.toggle("open");
+
+});
+
+
+navMenu.querySelectorAll("a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navMenu.classList.remove("open");
+
+    });
+
+});
+
+
+
+/* =====================================
+   FOOTER YEAR
+===================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value) {
+
+    return String(value || "").replace(
+        /[&<>"']/g,
+        function(character) {
+
+            return {
+
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+
+            }[character];
+
+        }
+    );
+
+}
+
+
+
+/* =====================================
+   FORMAT DATE
+===================================== */
+
+function formatDate(date) {
+
+    if (!date) {
+        return "Unknown date";
+    }
+
+    return new Date(
+        date + "T00:00:00"
+    ).toLocaleDateString(
+
+        undefined,
+
+        {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+
+    );
+
+}
+
+
+
+/* =====================================
+   FETCH NEWS
+===================================== */
+
+async function loadNews() {
+
+    const feed =
+        document.getElementById("newsFeed");
+
+
+    try {
+
+        const response = await fetch(
+
+            SUPABASE_URL +
+            "/rest/v1/news" +
+            "?select=id,report_date,reporter,place,content" +
+            "&order=report_date.desc",
+
+            {
+
+                method: "GET",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_ANON_KEY,
+
+                    "Authorization":
+                        "Bearer " +
+                        SUPABASE_ANON_KEY
+
+                }
+
+            }
+
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                await response.text()
+            );
+
+        }
+
+
+        const news =
+            await response.json();
+
+
+        if (news.length === 0) {
+
+            feed.innerHTML = `
+                <p class="status">
+                    No news has been published yet.
+                </p>
+            `;
+
+            return;
+
+        }
+
+
+        feed.innerHTML =
+            news.map(function(item) {
+
+                return `
+
+                    <article class="news-card">
+
+                        <div class="news-meta">
+
+                            <span>
+                                <strong>
+                                    Reported by:
+                                </strong>
+
+                                ${escapeHTML(
+                                    item.reporter
+                                )}
+                            </span>
+
+
+                            <span>
+                                <strong>
+                                    Place:
+                                </strong>
+
+                                ${escapeHTML(
+                                    item.place
+                                )}
+                            </span>
+
+
+                            <span>
+                                <strong>
+                                    Date:
+                                </strong>
+
+                                ${formatDate(
+                                    item.report_date
+                                )}
+                            </span>
+
+                        </div>
+
+
+                        <div class="news-content">
+
+                            ${escapeHTML(
+                                item.content
+                            )}
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }).join("");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        feed.innerHTML = `
+
+            <p class="status">
+                Unable to load news.
+                Please check the Supabase
+                configuration and RLS policy.
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================
+   START
+===================================== */
+
+loadNews();
+
+</script>
+
+
+</body>
+</html>
+```
